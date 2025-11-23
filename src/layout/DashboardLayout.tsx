@@ -1,6 +1,6 @@
 
 import { Outlet } from "react-router-dom";
-import SearchBar from "../components/SearchBar";
+import NavBar from "../components/NavBar";
 import DashboardSidebar from "../components/DashboardSidebar";
 import { useUIStore } from "../store/uiStore";
 
@@ -11,7 +11,7 @@ export default function DashboardLayout() {
     <div className="h-screen flex flex-col overflow-hidden">
 
       <div className="h-[85px] shadow fixed top-0 left-0 right-0 bg-white z-50">
-        <SearchBar />
+        <NavBar />
       </div>
 
       <div className="flex lg:pt-[85px] h-full overflow-hidden">

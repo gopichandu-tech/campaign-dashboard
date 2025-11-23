@@ -2,7 +2,7 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import logo from '../assets/logo.webp'
 import { useUIStore } from "../store/uiStore";
 import ProfileIcons from "./cards/ProfileIcons";
-export default function SearchBar(){
+export default function NavBar(){
     const openSearch = useUIStore((state) => state.openSearch);
      
      const sidebarOpen = useUIStore((state) => state.sidebarOpen)
