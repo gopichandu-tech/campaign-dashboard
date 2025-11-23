@@ -7,7 +7,6 @@ export default function PromptPlayground() {
     <div className="p-6 w-full">
       <h1 className="text-2xl font-bold mb-4">Prompt Playground</h1>
 
-      {/* Input Section */}
       <div className="flex gap-3 mb-4">
         <input
           type="text"
@@ -24,7 +23,6 @@ export default function PromptPlayground() {
         </button>
       </div>
 
-      {/* Output Section */}
       <div className="mt-4">
         {results.length === 0 && (
           <p className="text-gray-500">No results or unrecognized prompt.</p>

@@ -23,7 +23,7 @@ export default function DeviceBreakdownChart({ data }: { data: any }) {
               dataKey="value"
               cx="50%"
               cy="50%"
-              outerRadius={window.innerWidth < 640 ? 80 : 100}  // Dynamic radius
+              outerRadius={window.innerWidth < 640 ? 80 : 100}
               label
             >
               {pieData.map((_, idx) => (

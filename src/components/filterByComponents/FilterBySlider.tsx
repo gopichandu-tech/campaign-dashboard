@@ -6,16 +6,13 @@ export default function FilterBySlider() {
   const { ctr, setCTR } = useFilterStore();
   const [value, setValue] = useState([ctr]);
 
-  // Update Zustand when slider moves
   useEffect(() => {
     setCTR(value[0]);
   }, [value]);
 
   
-
-  // 🔥 IMPORTANT FIX: Update slider UI whenever "ctr" resets in the store
   useEffect(() => {
-    setValue([ctr]); // when Clear Filters sets ctr = 0 → slider resets
+    setValue([ctr]);
   }, [ctr]);
 
   return (

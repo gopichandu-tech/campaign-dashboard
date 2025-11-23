@@ -12,7 +12,7 @@ export default function SearchBar(){
      const sidebarOpen = useUIStore((state) => state.sidebarOpen)
      const toggleSidebar = useUIStore((state) => state.toggleSidebar);
 
-     const { promptText, setPromptText, results, runPrompt } = usePromptStore();
+     const { promptText, setPromptText, runPrompt } = usePromptStore();
 
     return (
         <div className="flex justify-between h-[85px] w-full">

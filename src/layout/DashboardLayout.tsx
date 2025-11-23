@@ -1,6 +1,4 @@
 
-
-// src/layout/DashboardLayout.tsx
 import { Outlet } from "react-router-dom";
 import SearchBar from "../components/SearchBar";
 import DashboardSidebar from "../components/DashboardSidebar";
