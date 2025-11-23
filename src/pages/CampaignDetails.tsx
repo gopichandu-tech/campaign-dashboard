@@ -14,14 +14,12 @@ export default function CampaignDetails() {
   const campaign = campaigns.find((c) => c.id === Number(id));
 
   if (!campaign) {
-    return <div className="p-6 text-red-500">Campaign not found.</div>;
+    return <h2 className="p-6 text-red-500">Campaign not found.</h2>;
   }
 
   return (
     <div className="p-6">
-
       <Breadcrumbs />
-
       <SummaryCards campaign={campaign} />
 
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 mt-6">

@@ -10,7 +10,6 @@ export default function FilterBySlider() {
     setCTR(value[0]);
   }, [value]);
 
-  
   useEffect(() => {
     setValue([ctr]);
   }, [ctr]);

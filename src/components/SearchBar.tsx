@@ -1,22 +1,17 @@
 import { RxHamburgerMenu } from "react-icons/rx";
-import { IoIosSearch } from "react-icons/io";
 import logo from '../assets/logo.webp'
 import { useUIStore } from "../store/uiStore";
 import ProfileIcons from "./cards/ProfileIcons";
-import { usePromptStore } from "@/store/PromptStore";
-
 export default function SearchBar(){
     const openSearch = useUIStore((state) => state.openSearch);
-    const toggleOpenSearch = useUIStore((state) => state.toggleOpenSearch); 
      
      const sidebarOpen = useUIStore((state) => state.sidebarOpen)
      const toggleSidebar = useUIStore((state) => state.toggleSidebar);
 
-     const { promptText, setPromptText } = usePromptStore();
-
     return (
-        <div className="flex justify-between h-[85px] w-full">
-           <div className="flex items-center lg:gap-[36px] gap-[24px] mr-[24px] lg:mx-[24px] w-full">
+        <header  className="flex justify-between h-[85px] w-full">
+          <nav></nav>
+           <nav className="flex lg:justify-start justify-between items-center lg:gap-[36px] gap-[24px] mr-[24px] lg:mx-[24px] w-full">
               <a href="/">
                 <img
                 src={logo}
@@ -36,7 +31,7 @@ export default function SearchBar(){
                   className={`${sidebarOpen ? "text-gray-600" : "text-black-800"} w-[35px] h-[35px] cursor-pointer`}
                 />
               </div>
-              <div className="flex items-center gap-3 flex-1 order-2 lg:order-2 lg:flex-none">
+              {/* <div className="flex items-center gap-3 flex-1 order-2 lg:order-2 lg:flex-none">
 
                 <IoIosSearch
                   size={35}
@@ -57,10 +52,17 @@ export default function SearchBar(){
                   style={{ overflow: "hidden" }}
                 />
 
-              </div>
-           </div>
-            <ProfileIcons />
-        </div>
+                <button
+                  onClick={runPrompt}
+                  className="bg-black text-white px-4 py-2 rounded-lg"
+                >
+                  Run
+                </button>
+
+              </div> */}
+           </nav>
+              <ProfileIcons />
+        </header >
     )
 
 };

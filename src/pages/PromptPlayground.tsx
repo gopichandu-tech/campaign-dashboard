@@ -1,4 +1,5 @@
 import { usePromptStore } from "@/store/PromptStore";
+import CampaignCard from "@/components/cards/CampaignCard";
 
 export default function PromptPlayground() {
   const { promptText, setPromptText, results, runPrompt } = usePromptStore();
@@ -17,7 +18,7 @@ export default function PromptPlayground() {
         />
         <button
           onClick={runPrompt}
-          className="bg-black text-white px-4 py-2 rounded-lg"
+          className="bg-black text-white px-4 py-2 rounded-lg cursor-pointer"
         >
           Run
         </button>
@@ -28,18 +29,11 @@ export default function PromptPlayground() {
           <p className="text-gray-500">No results or unrecognized prompt.</p>
         )}
 
-        {results.map((item) => (
-          <div
-            key={item.id}
-            className="p-4 mb-3 border rounded-xl shadow-md bg-white"
-          >
-            <h2 className="text-xl font-semibold">{item.name}</h2>
-            <p className="text-gray-700">{item.description}</p>
-            <p>Status: {item.status}</p>
-            <p>CTR: {item.ctr}%</p>
-            <p>Conversions: {item.conversions}</p>
-          </div>
-        ))}
+        <div className="flex flex-wrap justify-evenly gap-[36px] lg:mb-[0px] mb-[85px]">
+          {results.map((item) => (
+            <CampaignCard key={item.id} item={item} />
+          ))}
+        </div>
       </div>
     </div>
   );

@@ -16,45 +16,104 @@ export const usePromptStore = create<PromptStore>((set, get) => ({
   setPromptText: (value) => set({ promptText: value }),
 
   runPrompt: () => {
-    const text = get().promptText.toLowerCase();
-    let output = campaigns;
+  const text = get().promptText.toLowerCase().trim();
+  let output = campaigns;
 
-    // ----------- INTENT PARSING -----------
+  // ==============================
+  // 1️⃣ PRIORITY INTENT MATCHING
+  // ==============================
 
-    // 1. Top campaigns by CTR
-    if (text.includes("top") && text.includes("ctr")) {
-      output = [...campaigns]
-        .sort((a, b) => b.ctr - a.ctr)
-        .slice(0, 5);
+  // 🔹 Top campaigns by CTR
+  if (text.includes("top") && text.includes("ctr")) {
+    output = [...campaigns]
+      .sort((a, b) => b.ctr - a.ctr)
+      .slice(0, 5);
+  }
+
+  // 🔹 Best performing campaigns by conversions
+  else if (text.includes("best") || text.includes("highest")) {
+    output = [...campaigns]
+      .sort((a, b) => b.conversions - a.conversions)
+      .slice(0, 1);
+  }
+
+  // ==============================
+  // 2️⃣ STATUS MATCHES
+  // ==============================
+
+  else if (["active", "paused", "completed"].includes(text)) {
+    output = campaigns.filter(
+      (c) => c.status.toLowerCase() === text
+    );
+  }
+
+  // ==============================
+  // 3️⃣ DEPARTMENT FILTER
+  // ==============================
+
+  else {
+    const departments = ["marketing", "sales", "hr", "product"];
+    const dep = departments.find((d) => text.includes(d));
+
+    if (dep) {
+      output = campaigns.filter(
+        (c) => c.department.toLowerCase() === dep
+      );
     }
+  }
 
-    // 2. Paused campaigns
-    else if (text.includes("paused")) {
-      output = campaigns.filter((c) => c.status.toLowerCase() === "paused");
-    }
+  // ==============================
+  // 4️⃣ PLATFORM FILTER
+  // ==============================
 
-    // 3. Best performing (by conversions)
-    else if (text.includes("best") || text.includes("highest")) {
-      output = [...campaigns]
-        .sort((a, b) => b.conversions - a.conversions)
-        .slice(0, 1);
-    }
+  if (text.includes("google")) {
+    output = campaigns.filter((c) =>
+      c.platformBreakdown.some((p) =>
+        p.platform.toLowerCase().includes("google")
+      )
+    );
+  }
 
-    // 4. Active campaigns
-    else if (text.includes("active")) {
-      output = campaigns.filter((c) => c.status.toLowerCase() === "active");
-    }
+  if (text.includes("youtube")) {
+    output = campaigns.filter((c) =>
+      c.platformBreakdown.some((p) =>
+        p.platform.toLowerCase().includes("youtube")
+      )
+    );
+  }
 
-    // 5. Completed campaigns
-    else if (text.includes("completed")) {
-      output = campaigns.filter((c) => c.status.toLowerCase() === "completed");
-    }
+  // ==============================
+  // 5️⃣ BUDGET FILTER (>, <, >=, <=)
+  // ==============================
 
-    // 6. Unknown command
-    else {
-      output = [];
-    }
+  const budgetMatch = text.match(/budget\s*(>=|<=|>|<)\s*(\d+)/);
+  if (budgetMatch) {
+    const operator = budgetMatch[1];
+    const value = Number(budgetMatch[2]);
 
-    set({ results: output });
-  },
+    output = campaigns.filter((c) => {
+      if (operator === ">") return c.budget > value;
+      if (operator === ">=") return c.budget >= value;
+      if (operator === "<") return c.budget < value;
+      if (operator === "<=") return c.budget <= value;
+    });
+  }
+
+  // ==============================
+  // 6️⃣ FALLBACK → TEXT SEARCH
+  // ==============================
+
+  if (output === campaigns || output.length === 0) {
+    output = campaigns.filter(
+      (c) =>
+        c.name.toLowerCase().includes(text) ||
+        c.description.toLowerCase().includes(text) ||
+        c.department.toLowerCase().includes(text)
+    );
+  }
+
+  // Update store
+  set({ results: output });
+},
+
 }));

@@ -17,22 +17,21 @@ export default function ProfileIcons(){
         </div>
 
         <div className="lg:hidden fixed bottom-0 inset-x-0 z-50 bg-white shadow-lg py-[24px]">
-  <div className="flex justify-evenly items-center">
-    <FaMessage className="w-8 h-8" />
+          <div className="flex justify-evenly items-center">
+            <FaMessage className="w-8 h-8" />
 
-    <div onClick={toggleIsNotification}>
-      {isNotification ? (
-        <FaBell className="w-8 h-8" />
-      ) : (
-        <FaBellSlash className="w-8 h-8" />
-      )}
-    </div>
+            <div onClick={toggleIsNotification}>
+              {isNotification ? (
+                <FaBell className="w-8 h-8" />
+              ) : (
+                <FaBellSlash className="w-8 h-8" />
+              )}
+            </div>
 
-    <FaUserCircle className="w-8 h-8" />
-  </div>
-</div>
-
-
+            <FaUserCircle className="w-8 h-8" />
+          </div>
+        </div>
+        
        </>
    )
 }

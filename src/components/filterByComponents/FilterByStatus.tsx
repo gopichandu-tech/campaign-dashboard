@@ -7,12 +7,10 @@ export default function FilterByStatus() {
 
   return (
     <div>
-      {/* Title */}
       <h2 className="text-[18px] leading-[22px] md:text-[24px] md:leading-[30px] font-semibold capitalize py-[10px]">
         Status
       </h2>
 
-      {/* Options */}
       <div className="flex lg:flex-col flex-row flex-wrap gap-[20px] py-[5px]">
         {filterByStatus?.options?.map((item, index) => (
         <label

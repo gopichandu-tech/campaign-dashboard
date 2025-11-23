@@ -21,7 +21,7 @@ export const router = createBrowserRouter([
     ],
   },
   {
-    path: "/prompt",
+    path: "/prompt-playground",
     element: <PromptPlayground />,
   },
 ]);

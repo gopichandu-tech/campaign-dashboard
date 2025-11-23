@@ -12,7 +12,7 @@ type UIStore = {
 
 export const useUIStore = create<UIStore>((set) => ({
   openSearch : false,
-  sidebarOpen: true,
+  sidebarOpen: false,
   isNotification : true,
 
   toggleOpenSearch : () => set((state) => ( {

@@ -6,7 +6,7 @@ export default function Breadcrumbs() {
 
   return (
     <div className="text-sm text-gray-600 mb-4 flex gap-2 cursor-pointer">
-      <div ><a href="/" className="hover:underline capitalize mr-[5px]">dashboard </a> <span>/</span></div>
+      <p ><a href="/" className="hover:underline capitalize mr-[5px]">dashboard </a> <span>/</span></p>
       {pathParts.map((part, index) => (
         <div key={index} className="flex items-center gap-2">
           <div

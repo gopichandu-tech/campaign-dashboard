@@ -1,4 +1,3 @@
-// DeviceBreakdownChart.tsx
 import { PieChart, Pie, Cell, Tooltip, Legend, ResponsiveContainer } from "recharts";
 
 export default function DeviceBreakdownChart({ data }: { data: any }) {
@@ -13,8 +12,6 @@ export default function DeviceBreakdownChart({ data }: { data: any }) {
   return (
     <div className="bg-white p-4 rounded-xl shadow-md overflow-x-auto">
       <h2 className="text-lg font-semibold mb-2">Device Breakdown</h2>
-
-      {/* Prevent chart from shrinking too much on small screens */}
       <div className="min-w-[400px] w-full">
         <ResponsiveContainer width="100%" height={300}>
           <PieChart>
