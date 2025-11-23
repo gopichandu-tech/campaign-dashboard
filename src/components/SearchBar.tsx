@@ -16,7 +16,7 @@ export default function SearchBar(){
                 <img
                 src={logo}
                 alt="logo"
-                className={`lg:w-auto h-[55px] ml-[16px] lg:ml-[0px] 
+                className={`lg:w-auto h-[55px] ml-[16px] lg:ml-[0px]
                   ${openSearch ? "hidden lg:block" : "block"} 
                 `}
                 />

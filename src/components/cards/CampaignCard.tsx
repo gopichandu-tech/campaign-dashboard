@@ -22,7 +22,7 @@ export default function CampaignCard({ item }: any) {
         <span className="font-[600]">CTR: </span>{item.ctr}%
       </p>
       <Link to={`/${item.department}/${item.id}`}>
-        <button className="my-[20px] cursor-pointer font-[600] text-[18px] bg-[#FFF] text-[#059669] px-[24px] py-[12px] rounded-[6px]">
+        <button className="my-[20px] cursor-pointer font-[600] text-[18px] bg-[#FFF] text-emerald-700 px-[24px] py-[12px] rounded-[6px]">
           View Details
         </button>
       </Link>
