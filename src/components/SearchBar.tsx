@@ -12,16 +12,16 @@ export default function SearchBar(){
      const sidebarOpen = useUIStore((state) => state.sidebarOpen)
      const toggleSidebar = useUIStore((state) => state.toggleSidebar);
 
-     const { promptText, setPromptText, runPrompt } = usePromptStore();
+     const { promptText, setPromptText } = usePromptStore();
 
     return (
         <div className="flex justify-between h-[85px] w-full">
-           <div className="flex items-center lg:gap-[36px] gap-[24px] mx-[16px] lg:mx-[24px] w-full">
+           <div className="flex items-center lg:gap-[36px] gap-[24px] mr-[24px] lg:mx-[24px] w-full">
               <a href="/">
                 <img
                 src={logo}
                 alt="logo"
-                className={`lg:w-auto h-[55px] 
+                className={`lg:w-auto h-[55px] ml-[16px] lg:ml-[0px] 
                   ${openSearch ? "hidden lg:block" : "block"} 
                 `}
                 />
@@ -44,7 +44,6 @@ export default function SearchBar(){
                   onClick={toggleOpenSearch}
                 />
 
-                <div className={`flex gap-[12px] ${openSearch ? "w-full opacity-100" : "w-0 opacity-0 p-0 border-none"}`}>
                   <input
                   type="text"
                   placeholder='Example: "Show top campaigns by CTR"'
@@ -53,18 +52,10 @@ export default function SearchBar(){
                   className={`
                     transition-all duration-300 border border-gray-300 rounded-lg lg:min-w-[300px]
                     py-1 px-3 focus:outline-none focus:ring-2 focus:ring-purple-400
-                   
+                    ${openSearch ? "w-full opacity-100" : "w-0 opacity-0 p-0 border-none"}
                   `}
                   style={{ overflow: "hidden" }}
                 />
-
-                <button
-                  onClick={runPrompt}
-                  className="bg-black text-white px-4 py-[5px] rounded-sm"
-                >
-                  Run
-                </button>
-                </div>
 
               </div>
            </div>

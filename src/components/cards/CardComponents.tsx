@@ -10,12 +10,10 @@ export default function CardComponents() {
   const applyFilters = () => {
     let result = campaigns;
 
-    // Filter by Status
     if (status.length > 0) {
       result = result.filter((c) => status.includes(c.status));
     }
 
-    // ⭐ Filter by CTR (THIS WAS MISSING)
     result = result.filter((c) => c.ctr >= ctr);
 
     setFiltered(result);
@@ -39,7 +37,7 @@ export default function CardComponents() {
     {
       filtered?.map((item) => (
         <div
-          className="w-[450px] lg:h-[300px] h-[350px] px-[24px] pt-[24px] rounded-2xl mb-4"
+          className="w-[450px] lg:h-[350px] h-[400px] px-[24px] pt-[24px] rounded-2xl mb-4"
           key={item?.id}
           style={{ background: statusGradients[item.status as CampaignStatus] }}
         >

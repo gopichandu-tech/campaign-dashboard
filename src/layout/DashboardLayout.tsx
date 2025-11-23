@@ -17,7 +17,6 @@ export default function DashboardLayout() {
 
       <div className="flex lg:pt-[85px] h-full overflow-hidden">
 
-
         {sidebarOpen && (
           <div className="block lg:hidden w-full h-full fixed left-0 top-[85px] bottom-0 bg-white z-50">
             <DashboardSidebar />

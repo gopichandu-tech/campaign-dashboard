@@ -5,7 +5,8 @@ export default function Breadcrumbs() {
   const pathParts = location.pathname.split("/").filter(Boolean);
 
   return (
-    <div className="text-sm text-gray-600 mb-4 flex gap-2">
+    <div className="text-sm text-gray-600 mb-4 flex gap-2 cursor-pointer">
+      <div ><a href="/" className="hover:underline capitalize mr-[5px]">dashboard </a> <span>/</span></div>
       {pathParts.map((part, index) => (
         <div key={index} className="flex items-center gap-2">
           <div
@@ -13,7 +14,6 @@ export default function Breadcrumbs() {
           >
             {part}
           </div>
-
           {index < pathParts.length - 1 && <span>/</span>}
         </div>
       ))}
