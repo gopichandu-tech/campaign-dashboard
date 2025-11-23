@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 
 type CampaignStatus = "Active" | "Paused" | "Completed";
-
 const statusGradients: Record<CampaignStatus, string> = {
   Active: "linear-gradient(135deg, #6EE7B7 0%, #34D399 50%, #059669 100%)",
   Paused: "linear-gradient(135deg, #FCD34D 0%, #FB923C 50%, #F97316 100%)",

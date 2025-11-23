@@ -3,6 +3,7 @@ import { FaPlay } from "react-icons/fa";
 import FilterByStatus from "./filterByComponents/FilterByStatus";
 import FilterBySlider from "./filterByComponents/FilterBySlider";
 import { useFilterStore } from "@/store/filterStore";
+import { Link } from "react-router-dom";
 
 export default function DashboardSidebar(){
     const { clearFilters } = useFilterStore();
@@ -20,7 +21,7 @@ export default function DashboardSidebar(){
                </div>
                <div className="flex gap-[6px] py-[10px]">
                  <FaPlay className="my-auto text-[20px]" />
-                 <a href="/prompt-playground"><h2 className="text-[20px]">Prompt Playground</h2> </a>
+                 <Link to="/prompt-playground"><h2 className="text-[20px]">Prompt Playground</h2> </Link>
                </div>
                <hr className="border-gray-300 mr-[20px] mt-[5px]" />
 
@@ -43,7 +44,12 @@ export default function DashboardSidebar(){
                   Apply Filters
                </button>
                 <button
-                  onClick={clearFilters}
+                   onClick={() => {
+                    clearFilters();
+                    setTimeout(() => {
+                      window.dispatchEvent(new Event("apply-filters"));
+                    }, 0);
+                  }}
                   className="bg-[#000] text-[#FFF] px-[24px] py-[12px] my-[20px] cursor-pointer mx-[12px]"
                 >
                   Clear

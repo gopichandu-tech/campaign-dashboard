@@ -10,7 +10,6 @@ export default function DashboardLayout() {
   return (
     <div className="h-screen flex flex-col overflow-hidden">
 
-      {/* FIXED SEARCH BAR */}
       <div className="h-[85px] shadow fixed top-0 left-0 right-0 bg-white z-50">
         <SearchBar />
       </div>
